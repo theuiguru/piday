@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><meta charset="utf-8"><meta viewport=""><head><title>PI(e) Day 2014</title>
+<style type="text/css">
+html, body {background:url(stanley1.png) fixed no-repeat center; color:#ffff99; font-family:'Helvetica Neue', sans-serif; font-size:24px;}
+h1.greet {font-weight:500;}
+.countdown {float:left; text-align:center; position:absolute; bottom:50%; left:20%;}
+</style></head><body>
+	<h1 class="greet">Happy <span class="pi"></span> Day!</h1>
+	<div class="countdown"><span class="days"></span> days 'til my next Pi(e) Day!</div>
+<script type="text/javascript">
+var pi = Math.PI;
+document.querySelector(".pi").innerHTML = pi;
+var now = new Date();
+var then = new Date("March 14, 2015"); //set this value to the countdown date.
+var gap = then.getTime() - now.getTime();
+gap = Math.floor(gap / (1000 * 60 * 60 * 24));
+document.querySelector(".days").innerHTML = gap;
+</script></body></html>
