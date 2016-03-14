@@ -1,14 +1,15 @@
 <!DOCTYPE html><html><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"><meta name="mobile-web-app-capable" content="yes"><head><title>PI(e) Day 2015</title><style type="text/css">
-html, body {background:url(https://pbs.twimg.com/media/CA0h5rEWQAA2dwt.jpg) fixed no-repeat center; background-size:cover; color:#C62828; font-family:'Helvetica Neue', sans-serif; font-size:24px;}
-h1.greet {font-weight:500;}
-.countdown {float:left; text-align:center; position:absolute; bottom:0; left:0; right:300px; padding:20px;}
-</style></head><body><!--<h1 class="greet">Happy <span class="pi"></span> Day!</h1>-->
+html, body {background:url(https://pbs.twimg.com/media/CA0h5rEWQAA2dwt.jpg) fixed no-repeat center; background-size:cover; color:#C62828; font-family:'Helvetica Neue', sans-serif;}
+h1 {font-size:3em; font-weight:500; text-shadow:1px 1px #999; margin:100px 100px 0; color:#EEFF41;}
+.countdown {margin:300px 200px 0; font-size:2em;}
+</style></head><body>
+<h1>Happy &#960; Day!</h1>
 <div class="countdown"><span class="days"></span> days 'til my next PI(e) Day!</div>
 <script type="text/javascript">
-	//var pi = Math.PI; document.querySelector(".pi").innerHTML = pi;
-	var now = new Date();
-	var then = new Date("March 14, 2016"); //set this value to the countdown date.
-	var gap = then.getTime() - now.getTime();
-	gap = Math.floor(gap / (1000 * 60 * 60 * 24));
-	document.querySelector(".days").innerHTML = gap;
+  //var pi = Math.PI; document.querySelector(".pi").innerHTML = pi;
+  var now = new Date();
+  var then = new Date("March 14, 2017"); //set this value to the countdown date.
+  var gap = then.getTime() - now.getTime();
+  gap = Math.floor(gap / (1000 * 60 * 60 * 24));
+  document.querySelector(".days").innerHTML = gap;
 </script></body></html>
