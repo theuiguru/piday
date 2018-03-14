@@ -8,10 +8,10 @@ h1 {font-size:60px; font-weight:500; color:#EEFF41; text-shadow:1px 1px 3px #fff
 </style></head><body><div class="splash"><h1>Happy PI Day!</h1></div>
 <div class="main"><div class="countdown"><span class="days"></span> days 'til my next PI(e) Day!</div></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>f<script type="text/javascript">
-  $(".main").animate({opacity: 1}, 1500);
+  $(".main").animate({opacity: 1}, 3000);
   //var pi = Math.PI; document.querySelector(".pi").innerHTML = pi;
   var now = new Date();
-  var then = new Date("March 14, 2018"); //set this value to the countdown date.
+  var then = new Date("March 14, 2019"); //set this value to the countdown date.
   var gap = then.getTime() - now.getTime();
   gap = Math.floor(gap / (1000 * 60 * 60 * 24));
   document.querySelector(".days").innerHTML = gap;
