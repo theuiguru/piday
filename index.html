@@ -1,18 +1,25 @@
-<!DOCTYPE html><html><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"><meta name="mobile-web-app-capable" content="yes"><head><title>Happy PI(e) Day!</title>
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Helvetica%20Neue"><style type="text/css">
-html, body {margin:0; padding:0; font-family:'Helvetica Neue', sans-serif; font-size:18px;}
-.splash {position:fixed; background:url(Stanley_Pies.jpg) no-repeat fixed top center; background-size:cover; width:100%; height:100%;}
-.main {text-align:center; color:#fff; width:100%; height:100%; opacity:0; position:absolute; background:url(stanley1.png) no-repeat center fixed; background-size:cover;}
-h1 {font-size:60px; font-weight:500; color:#EEFF41; text-shadow:1px 1px 3px #fff;}
-.countdown {margin-top:20em; font-size:2em; color:#F48FB1; padding:30px 0; text-align:center; background-color:rgba(0,0,0,0.5); font-size:24px;}
-</style></head><body><div class="splash"><h1>Happy PI Day!</h1></div>
-<div class="main"><div class="countdown"><span class="days"></span> days 'til my next PI(e) Day!</div></div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>f<script type="text/javascript">
-  $(".main").animate({opacity: 1}, 3000);
-  //var pi = Math.PI; document.querySelector(".pi").innerHTML = pi;
-  var now = new Date();
-  var then = new Date("March 14, 2019"); //set this value to the countdown date.
-  var gap = then.getTime() - now.getTime();
-  gap = Math.floor(gap / (1000 * 60 * 60 * 24));
-  document.querySelector(".days").innerHTML = gap;
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"><title>π Day</title><style type="text/css">
+html, body {margin:0; padding:0; font-family:sans-serif; line-height:1.6; color:#fff;}
+.container {height:100%; min-height:100vh; display:flex; justify-content:center; align-items:center; text-align:center;}
+h1 {font-weight:normal; font-size:40px;} h1 span {color:#e91e63;}
+footer {text-align:center; font-size:11px; color:#fff; line-height:40px; background:#e91e63;}
+</style></head><body>
+<div class="container"><h1 class="msg"></h1></div>
+<footer>Made by @ct on π Day.</footer><script>
+var now = new Date(),
+    today = (now.getMonth()+1) + '/' + (now.getDate()),
+    bodyBg = document.querySelector('.container'),
+    phrase = document.querySelector('.msg'),
+    then = new Date("March 14, 2019"),
+    gap = then.getTime() - now.getTime();
+gap = Math.floor(gap / (1000 * 60 * 60 * 24));
+if(today==='3/14') {
+  bodyBg.style.background = 'url(https://media.giphy.com/media/26DN1JxaPimD6awZa/giphy.gif) no-repeat fixed center';
+  bodyBg.style.backgroundSize = 'cover';
+  phrase.innerHTML = 'Happy 🥧 Day!';
+} else {
+  bodyBg.style.background = 'url(https://media.giphy.com/media/PEtL0mS2JXMBi/giphy.gif) no-repeat fixed center';
+  bodyBg.style.backgroundSize = 'cover';
+  phrase.innerHTML = gap + ' days til my next pi(<span>e</span>) day!';
+}
 </script></body></html>
