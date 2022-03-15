@@ -1,25 +1,24 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"><title>π Day</title><style type="text/css">
 html, body {margin:0; padding:0; font-family:sans-serif; line-height:1.6; color:#fff;}
 .container {height:100%; min-height:100vh; display:flex; justify-content:center; align-items:center; text-align:center;}
-h1 {font-weight:normal; font-size:40px;} h1 span {color:#e91e63;}
+.cover {background:rgba(0,0,0,0.2); position:absolute; width:100%; height:100%; display:grid; place-items:center;}
+h1 {font-weight:normal; font-size:5em; z-index:1;} h1 span {color:#e91e63;}
 footer {text-align:center; font-size:13px; color:#fff; line-height:40px; background:#e91e63;}
 </style></head><body>
-<div class="container"><h1 class="msg"></h1></div>
-<footer>Made by @ct with &#x2665; for 🥧.</footer><script>
+<div class="container"><div class="cover"></div><h1 class="msg"></h1></div>
+<footer>Made by @ct with &#x2665; for 🥧 and numbers (<span class="pi"></span>).</footer><script>
 var now = new Date(),
     today = (now.getMonth()+1) + '/' + (now.getDate()),
     bodyBg = document.querySelector('.container'),
     phrase = document.querySelector('.msg'),
-    then = new Date("March 14, 2021"),
+    then = new Date("March 14, 2023"),
     gap = then.getTime() - now.getTime();
 gap = Math.floor(gap / (1000 * 60 * 60 * 24));
 if(today==='3/14') {
-  bodyBg.style.background = 'url(https://media.giphy.com/media/26DN1JxaPimD6awZa/giphy.gif) no-repeat fixed center';
-  bodyBg.style.backgroundSize = 'cover';
-  phrase.innerHTML = 'Happy 🥧 Day!';
+  bodyBg.style.background = `url(https://media.giphy.com/media/26DN1JxaPimD6awZa/giphy.gif) no-repeat fixed center / cover`;
+  phrase.innerHTML = `Happy 22/7!`;
 } else {
-  bodyBg.style.background = 'url(https://media.giphy.com/media/OhsZ2n5gXdXNK/giphy.gif) no-repeat fixed top';
-  bodyBg.style.backgroundSize = 'cover';
-  phrase.innerHTML = gap + ' days til my next pi(<span>e</span>) day!';
+  bodyBg.style.background = `url(stanley.png) no-repeat fixed top / cover`;
+  phrase.innerHTML = gap + ` days til my next pi(<span>e</span>) day!`;
 }
-</script></body></html>
+document.querySelector('.pi').innerText = Math.PI;</script></body></html>
