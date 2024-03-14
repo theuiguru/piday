@@ -1,14 +1,14 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Happy π (Pi) Day</title></head><body class="bg-gray-100"><div class="h-screen flex flex-col justify-center items-center text-center text-white text-4xl pidaybg"><div class="absolute inset-0 bg-slate-900 opacity-30"></div><h1 class="z-10 msg"></h1></div>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Happy π (Pi) Day</title></head><body class="bg-gray-100"><div class="h-screen flex flex-col justify-center items-center text-center text-white text-4xl pidaybg"><div class="absolute inset-0 bg-slate-900 opacity-20"></div><h1 class="z-10 msg"></h1></div>
 <footer class="text-center text-xs text-white bg-rose-700 p-4">Made by <a href="https://ct.surge.sh" class="underline hover:no-underline">@ct</a> with &#x2665; for 🥧 <span class="pi"></span>.</footer><script src="https://cdn.tailwindcss.com"></script><script>
 let now = new Date(),
     today = (now.getMonth()+1) + '/' + (now.getDate()),
     bodyBg = document.querySelector('.pidaybg'),
     phrase = document.querySelector('.msg'),
-    then = new Date("March 14, 2024"),
+    then = new Date("March 14, 2025"),
     gap = then.getTime() - now.getTime(),
     daysLeft = Math.floor(gap / (1000 * 60 * 60 * 24));
 if(today==='3/14') {
-  bodyBg.style.background = `url(SimpsonsPiJoke.jpeg) no-repeat fixed center / contain`;
+  bodyBg.style.background = `url(SimpsonsPiJoke.jpeg) no-repeat center / cover`;
 } else {
   bodyBg.style.background = `url(stanley.png) no-repeat fixed top / cover`;
   phrase.innerHTML = daysLeft + ` days 'til my next pi(<span class="text-rose-500">e</span>) day!`;
