@@ -10,7 +10,7 @@ let now = new Date(),
 if(today==='3/14') {
   bodyBg.style.backgroundImage = `url(SimpsonsPiJoke.jpeg)`;
 } else {
-  bodyBg.style.background = `url(stanley.png) no-repeat fixed top`;
+  bodyBg.style.background = `url(stanley.png) no-repeat fixed top / cover`;
   phrase.innerHTML = daysLeft + ` days 'til my next pi(<span class="text-rose-500">e</span>) day!`;
 }
 document.querySelector('.pi').innerText = Math.PI;</script></body></html>
