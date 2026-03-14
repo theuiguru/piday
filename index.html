@@ -1,16 +1,122 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Happy π (Pi) Day</title></head><body class="bg-gray-100"><div class="h-screen flex flex-col justify-center items-center text-center text-white text-4xl pidaybg bg-no-repeat bg-fixed bg-center md:bg-cover sm:bg-contain"><div class="absolute inset-0 bg-slate-900 opacity-20"></div><h1 class="z-10 msg"></h1></div>
-<footer class="text-center text-xs text-white bg-rose-700 p-4">Made by <a href="https://ct.surge.sh" class="underline hover:no-underline">@ct</a> with &#x2665; for 🥧 <span class="pi"></span>.</footer><script src="https://cdn.tailwindcss.com"></script><script>
-let now = new Date(),
-    today = (now.getMonth()+1) + '/' + (now.getDate()),
-    bodyBg = document.querySelector('.pidaybg'),
-    phrase = document.querySelector('.msg'),
-    then = new Date("March 14, 2026"),
-    gap = then.getTime() - now.getTime(),
-    daysLeft = Math.floor(gap / (1000 * 60 * 60 * 24));
-if(today==='3/14') {
-  bodyBg.style.backgroundImage = `url(SimpsonsPiJoke.jpeg)`;
-} else {
-  bodyBg.style.background = `url(stanley.png) no-repeat fixed top / cover`;
-  phrase.innerHTML = daysLeft + ` days 'til my next pi(<span class="text-rose-500">e</span>) day!`;
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy π (Pi) Day</title>
+<script src="https://cdn.tailwindcss.com"></script><style>
+/* Rotating Icon Animation */
+.pi-spin { animation: spin 10s linear infinite; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+/* Top Ticker Animation */
+@keyframes scrollTicker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
-document.querySelector('.pi').innerText = Math.PI;</script></body></html>
+.pi-scroll {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scrollTicker 60s linear infinite;
+}
+/* Faded edges for ticker */
+.ticker-mask {
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+/* Watermark Background Symbol */
+.pi-symbol {
+    font-family: serif;
+    font-size: 20rem;
+    opacity: 0.05;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+}
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style></head><body id="main-body" class="transition-colors duration-1000 bg-slate-950 h-screen flex flex-col text-slate-100 font-sans overflow-hidden">
+    <div id="ticker-wrap" class="shrink-0 w-full overflow-hidden border-b border-white/10 py-3 bg-black/40 backdrop-blur-md z-50 ticker-mask">
+        <div class="pi-scroll text-xl font-mono text-amber-500/50 tracking-widest" id="ticker"></div>
+    </div>
+
+    <span class="pi-symbol">π</span>
+
+    <div id="scroll-container" class="flex-grow overflow-y-auto no-scrollbar relative z-10">
+        
+        <div class="flex flex-col items-center justify-center min-h-screen py-12 px-6">
+            
+            <div id="icon-container" class="mb-8">
+                <div class="text-[10rem] md:text-[12rem] leading-none select-none drop-shadow-2xl pi-spin">🥧</div>
+            </div>
+
+            <h1 id="headline" class="text-6xl md:text-8xl font-black mb-6 bg-gradient-to-r from-amber-400 to-rose-500 bg-clip-text text-transparent text-center leading-tight">
+                </h1>
+            
+            <div id="card" class="max-w-md w-full bg-white/5 backdrop-blur-xl p-6 rounded-[2.5rem] border border-white/10 shadow-2xl flex flex-col items-center">
+                
+                <div class="w-full rounded-2xl overflow-hidden mb-6 bg-black/40 aspect-video ring-1 ring-white/10 flex items-center justify-center">
+                    <img id="stanley-img" src="" alt="Stanley Hudson" class="w-full h-full object-cover">
+                </div>
+
+                <div class="w-full space-y-4 text-center">
+                    <p id="precision-text" class="text-sm text-slate-400 font-medium tracking-wide"></p>
+                    <code class="text-rose-400 text-2xl font-mono break-all block px-2" id="pi-value"></code>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center text-xs p-12 bg-black/20 border-t border-white/5">
+            &copy; Pi(e) Day <span id="year-footer"></span> | Made with &#x2665; for 🥧 by <a href="https://ct.surge.sh" class="underline hover:text-rose-400 transition">@ct</a>
+        </footer>
+    </div>
+<script>
+const now = new Date();
+const month = now.getMonth() + 1;
+const day = now.getDate();
+const isPiDay = (month === 3 && day === 14);
+const body = document.getElementById('main-body');
+const headline = document.getElementById('headline');
+const piValueDisplay = document.getElementById('pi-value');
+const stanleyImg = document.getElementById('stanley-img');
+const precisionText = document.getElementById('precision-text');
+const scrollContainer = document.getElementById('scroll-container');
+
+// Setup Ticker & Fixed Values
+piValueDisplay.innerText = Math.PI;
+document.getElementById('year-footer').innerText = `${now.getFullYear()}`;
+const piDigits = "3.141592653589793238462643383279502884197169399375105820974944592307816406286";
+document.getElementById('ticker').innerText = (piDigits + "   ").repeat(15);
+
+// Logic for Pi Day vs Regular Day
+if (isPiDay) {
+    body.classList.add('bg-gradient-to-br', 'from-slate-950', 'via-rose-950', 'to-slate-950');
+    headline.innerText = "Happy Pi(e) Day!";
+    stanleyImg.src = "Stanley_Pies.jpg";
+    precisionText.innerText = "Current Precision: 15 Decimal Places";
+} else {
+    body.classList.add('bg-gradient-to-br', 'from-slate-950', 'to-slate-900');
+    
+    let nextPi = new Date(now.getFullYear(), 2, 14);
+    if (now > nextPi) nextPi.setFullYear(now.getFullYear() + 1);
+    const daysLeft = Math.ceil((nextPi - now) / (1000 * 60 * 60 * 24));
+    
+    headline.innerText = `${daysLeft} Days 'Til Pi Day`;
+    stanleyImg.src = "stanley.png";
+    precisionText.innerText = "Stanley is not impressed. Come back later.";
+    document.getElementById('ticker').style.opacity = "0.2";
+}
+
+// Auto-Scroll Logic
+function autoScroll() {
+    scrollContainer.scrollTop += 1;
+    if (scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight) {
+        scrollContainer.scrollTop = 0;
+    }
+}
+let scrollInterval = setInterval(autoScroll, 50);
+
+// Pause on interaction
+scrollContainer.addEventListener('mouseenter', () => clearInterval(scrollInterval));
+scrollContainer.addEventListener('mouseleave', () => scrollInterval = setInterval(autoScroll, 50));
+</script></body></html>
